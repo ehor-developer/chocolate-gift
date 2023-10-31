@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--HTML初期設定-->
+    <meta charset="UTF-8">
+    <!--ViewPort設定-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--ページタイトル設定-->
+    <title>【便利ツール】チョコレートを贈る！</title>
+    <!--SEO対策・OGP設定-->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ChocolateGift|" />
+    <meta property="og:site_name" content="Ehor.work｜便利なアプリ" />
+    <meta property="og:description" content="相手にチョコレートを贈るためのアプリ！" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <meta name="robots" content="noarchive">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://ehor-developer.github.io/tool/img/choko.png" />
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+    <!--CSSフレームワーク読み込み-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+
+<body>
+    <p class="chocolate" style="font-size: 30vh; text-align: center;">🍫</p>
+    <div class="box">
+        <p class="title is-2 center">ChocolateGift🎁</p>
+        <p class="title is-6 center">あなたはチョコレートを受け取りました!</p>
+        <div class="box">
+            <p class="title is-5 center" id="message"></p>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function parm(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+    document.getElementById("message").innerHTML = decodeURIComponent(atob(parm("message")));
+</script>
+<style>
+    @keyframes sindo {
+        0% {
+            transform: translate(0px, 0px) rotateZ(0deg)
+        }
+
+        25% {
+            transform: translate(3px, 5px) rotateZ(1deg)
+        }
+
+        50% {
+            transform: translate(0px, 5px) rotateZ(0deg)
+        }
+
+        75% {
+            transform: translate(3px, 0px) rotateZ(-1deg)
+        }
+
+        100% {
+            transform: translate(0px, 0px) rotateZ(0deg)
+        }
+    }
+
+    .chocolate {
+        animation: sindo .1s infinite;
+    }
+
+
+    #display {
+        display: none;
+    }
+
+    .center {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    html {
+        padding: 10pt;
+    }
+
+    b {
+        color: rgb(218, 52, 52);
+        background-color: rgb(255, 230, 162);
+        padding-left: 4pt;
+        padding-right: 4pt;
+    }
+
+    .box button {
+        margin: 5pt;
+    }
+</style>
