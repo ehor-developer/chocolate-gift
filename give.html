@@ -50,7 +50,12 @@
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
-    document.getElementById("message").innerHTML = decodeURIComponent(atob(parm("message")));
+
+    var messageElement = document.getElementById("message");
+    var messageContent = decodeURIComponent(atob(parm("message")));
+    
+    // XSS対策としてinnerTextを使用
+    messageElement.innerText = messageContent;
 </script>
 <style>
     @keyframes sindo {
